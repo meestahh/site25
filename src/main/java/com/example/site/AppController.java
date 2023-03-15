@@ -15,40 +15,40 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
 
     @Autowired
-    private DeviceService service;
+    private ConfService service;
 
     @RequestMapping("/")
     public String viewHomePage(Model model, @Param("keyword") String keyword){
-        List<Device> listDevice = service.listAll(keyword);
-        model.addAttribute("ListDevice", listDevice);
+        List<Conf> listConf = service.listAll(keyword);
+        model.addAttribute("ListDevice", listConf);
         model.addAttribute("keyword", keyword);
         return "index";
     }
     @RequestMapping("/gist")
     public String index(Model model, @Param("keyword") String keyword){
-        List<Device> listDevice = service.listAll(keyword);
-        model.addAttribute("ListDevice", listDevice);
+        List<Conf> listConf = service.listAll(keyword);
+        model.addAttribute("ListConf", listConf);
         model.addAttribute("keyword", keyword);
         return "gist";
     }
 
     @RequestMapping("/new")
     public String showNewTypeForm(Model model){
-        Device type = new Device();
-        model.addAttribute("device", type);
-        return "new_device";
+        Conf type = new Conf();
+        model.addAttribute("Conf", type);
+        return "new_conf";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveType(@ModelAttribute("type") Device type){
+    public String saveType(@ModelAttribute("type") Conf type){
         service.save(type);
         return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditTypeForm(@PathVariable(name="id") Long id){
-        ModelAndView mav = new ModelAndView("edit_device");
-        Device type = service.get(id);
+        ModelAndView mav = new ModelAndView("edit_conf");
+        Conf type = service.get(id);
         mav.addObject("Type", type);
         return mav;
     }
@@ -58,4 +58,6 @@ public class AppController {
         service.delete(id);
         return "redirect:/";
     }
+
+
 }

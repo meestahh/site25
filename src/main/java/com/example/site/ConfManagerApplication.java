@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class DeviceManagerApplication extends SpringBootServletInitializer{
+public class ConfManagerApplication extends SpringBootServletInitializer{
 
     public static void main(String[] args){
-        SpringApplication.run(DeviceManagerApplication.class, args);
+        SpringApplication.run(ConfManagerApplication.class, args);
     }
 }

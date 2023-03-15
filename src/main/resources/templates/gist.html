@@ -18,17 +18,14 @@
 
     </thead>
     <tbody>
-    <tr th:each="type: ${ListDevice}">
+    <tr th:each="type: ${ListConf}">
         <th scope="row" class="text-white" th:text="${type.id}">ID техники отстутствует</th>
-        <th scope="row" class="text-white" th:text="${type.type1}">Вид техники отстутствует</th>
-        <th scope="row" class="text-white" th:text="${type.groupp}">Тип техники отстутствует</th>
-        <th scope="row" class="text-white" th:text="${type.date_first}">Дата ввоза отстутствует
+        <th scope="row" class="text-white" th:text="${type.name_}">Вид техники отстутствует</th>
+        <th scope="row" class="text-white" th:text="${type.date_}">Тип техники отстутствует</th>
+        <th scope="row" class="text-white" th:text="${type.first_fio}">Дата ввоза отстутствует
         </th>
-        <th scope="row" class="text-white" th:text="${type.data_last}">Дата вывоза отстутствует
+        <th scope="row" class="text-white" th:text="${type.last_fio}">Дата вывоза отстутствует
         </th>
-        <th scope="row" class="text-white" th:text="${type.fio}">ФИО отсутствует</th>
-        <td>
-        </td>
     </tr>
     </tbody>
 </table>

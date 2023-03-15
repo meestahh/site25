@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DeviceService {
+public class ConfService {
     @Autowired
-    private DeviceRepository repo;
+    private ConfRepository repo;
 
     public List<Conf> listAll(String keyword) {
         if (keyword != null) {
