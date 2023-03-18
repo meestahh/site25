@@ -108,7 +108,7 @@
     <form name="form1" style="text-align: center;">
         <p style="text-align: center; color: aliceblue">Среднее количество конференций в день: </p>
         <input type="month" name="doa" onchange="display()">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <p class="asd" style="color: aliceblue"></p>
         <script type="text/javascript">
             let d;
 
@@ -163,11 +163,10 @@
                         q = 31;
                         break;
                 }
-                const otvet = summ / q;
                 if (summ === 0) {
-                    document.write("0")
+                    document.querySelector('.asd').innerHTML="0";
                 } else {
-                    document.write(otvet)
+                    document.querySelector('.asd').innerHTML=summ / q;
                 }
             }
 
