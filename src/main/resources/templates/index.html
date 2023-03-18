@@ -81,8 +81,12 @@
                 let ths1 = tBody.querySelectorAll('th')
                 let ths = tBody.querySelectorAll('tr')
                 let allCount = 0;
-                for (let i = 1; i <= ths1.length - 2; i++) {
-                    if (ths1[i].innerText.slice(0, 4) + ths1[i].innerText.slice(5, 7) + ths1[i].innerText.slice(8, 10) < moment().format('YYYY-MM-DD').slice(0, 4) + moment().format('YYYY-MM-DD').slice(5, 7) + moment().format('YYYY-MM-DD').slice(8, 10)) {
+                for (let i = 2; i <= ths1.length - 2; i+=5) {
+                    let dateLate = ths1[i].innerText.slice(0, 4) + ths1[i].innerText.slice(5, 7) + ths1[i].innerText.slice(8, 10);
+                    let dateNow = moment().format('YYYY-MM-DD').slice(0, 4) + moment().format('YYYY-MM-DD').slice(5, 7) + moment().format('YYYY-MM-DD').slice(8, 10);
+                    console.log(dateLate + " " +dateNow)
+                    if (dateLate  < dateNow ){
+                        console.log(allCount)
                         allCount++;
                     }
                 }
@@ -118,8 +122,9 @@
                 let table = document.getElementById('1')
                 let tBody = table.querySelector('tbody')
                 let ths1 = tBody.querySelectorAll('th')
-                for (let i = 1; i <= ths1.length - 2; i++) {
+                for (let i = 3; i <= ths1.length - 2;i += 5) {
                     if (d.slice(0, 4) + d.slice(5, 7) === (ths1[i].innerText.slice(0, 4) + ths1[i].innerText.slice(5, 7)))
+                        console.log(ths1 + " " + d);<!-- вот без этой хуйни не работает вывод-->
                         summ++;
                 }
                 d = d.split("-");
