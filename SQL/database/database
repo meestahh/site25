@@ -1,0 +1,9 @@
+create database conf
+CREATE TABLE Conf(
+id int (15) NOT NULL AUTO_INCREMENT,
+name_ varchar (255) NOT NULL,
+date_ varchar (255) NOT NULL,
+first_fio varchar (255) NOT NULL,
+last_fio varchar (255) NOT NULL,
+PRIMARY KEY (id) )
+ENGINE = InnoDB DEFAULT CHARSET = UTF8mb4;
