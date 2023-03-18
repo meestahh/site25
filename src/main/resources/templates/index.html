@@ -27,13 +27,17 @@
                 ID
             </th>
             <th scope="col" onclick="sortTable(1)" style="cursor: pointer">
-                Название конференции</th>
+                Название конференции
+            </th>
             <th scope="col" onclick="sortTable(2)" style="cursor: pointer">
-                Дата проведения</th>
+                Дата проведения
+            </th>
             <th scope="col" onclick="sortTable(3)" style="cursor: pointer">
-                ФИО модератора</th>
+                ФИО модератора
+            </th>
             <th scope="col" onclick="sortTable(4)" style="cursor: pointer">
-                ФИО ведущего</th>
+                ФИО ведущего
+            </th>
             <th scope="col">Действия</th>
         </tr>
         </thead>
@@ -68,6 +72,25 @@
             getRowsColumn()
         </script>
     </p>
+    <p class="text-white">
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+        <script type="text/javascript">
+            function count() {
+                let table = document.getElementById('1')
+                let tBody = table.querySelector('tbody')
+                let ths1 = tBody.querySelectorAll('th')
+                let ths = tBody.querySelectorAll('tr')
+                let allCount = 0;
+                for (let i = 1; i <= ths1.length - 2; i++) {
+                    if (ths1[i].innerText.slice(0, 4) + ths1[i].innerText.slice(5, 7) + ths1[i].innerText.slice(8, 10) < moment().format('YYYY-MM-DD').slice(0, 4) + moment().format('YYYY-MM-DD').slice(5, 7) + moment().format('YYYY-MM-DD').slice(8, 10)) {
+                        allCount++;
+                    }
+                }
+                document.write('Конференций проведено: ' + allCount)
+            }
+            count()
+        </script>
+    </p>
     <blockquote class="blockquote text-center">
         <a href="/new">
             <button type="button" class="btn btn-primary" data-togge="button" aria-pressed="false" autocomplete="off">
@@ -78,20 +101,89 @@
     <blockquote class="blockquote text-center">
         <a href="/gist">
             <button type="button" class="btn btn-primary" data-togge="button" aria-pressed="false" autocomplete="off">
-                Гистограмма
+                Гистограммы
             </button>
         </a>
     </blockquote>
+    <form name="form1" style="text-align: center;">
+        <p style="text-align: center; color: aliceblue">Среднее количество конференций в день: </p>
+        <input type="month" name="doa" onchange="display()">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script type="text/javascript">
+            let d;
+
+            function display() {
+                d = form1.doa.value;
+                let summ = 0;
+                let table = document.getElementById('1')
+                let tBody = table.querySelector('tbody')
+                let ths1 = tBody.querySelectorAll('th')
+                for (let i = 1; i <= ths1.length - 2; i++) {
+                    if (d.slice(0, 4) + d.slice(5, 7) === (ths1[i].innerText.slice(0, 4) + ths1[i].innerText.slice(5, 7)))
+                        summ++;
+                }
+                d = d.split("-");
+                d = d[1];
+                let q;
+                switch (d) {
+                    case "01":
+                        q = 31;
+                        break;
+                    case "02":
+                        q = 28;
+                        break;
+                    case "03":
+                        q = 31;
+                        break;
+                    case "04":
+                        q = 30;
+                        break;
+                    case "05":
+                        q = 31;
+                        break;
+                    case "06":
+                        q = 30;
+                        break;
+                    case "07":
+                        q = 31;
+                        break;
+                    case "08":
+                        q = 31;
+                        break;
+                    case "09":
+                        q = 30;
+                        break;
+                    case "10":
+                        q = 31;
+                        break;
+                    case "11":
+                        q = 30;
+                        break;
+                    case "12":
+                        q = 31;
+                        break;
+                }
+                const otvet = summ / q;
+                if (summ === 0) {
+                    document.write("0")
+                } else {
+                    document.write(otvet)
+                }
+            }
+
+        </script>
+    </form>
 </div>
+
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/}]]";
     }
 </script>
 
+
 <script>
     function sortTable(n) {
-        console.log('успех')
         let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("1");
         switching = true;
